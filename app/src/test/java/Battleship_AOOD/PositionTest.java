@@ -1,7 +1,7 @@
 package src.test.java.Battleship_AOOD;
 
 import src.main.java.Battleship_AOOD.Position;
-//import org.
+import org.junit.Test;
 
 
 public class PositionTest {
@@ -10,6 +10,14 @@ public class PositionTest {
 
     //@Test 
     public void testPosition(){
+        System.out.println(pos1.toString());
+        System.out.println(pos1.getColIndex() + " Col index");
+        System.out.println(pos1.getRowIndex() + " Row index");
+
+        System.out.println(pos2.toString());
+        System.out.println(pos1.getCol() + " Col");
+        System.out.println(pos1.getRow() + " Row");
+
 
     }
 }
