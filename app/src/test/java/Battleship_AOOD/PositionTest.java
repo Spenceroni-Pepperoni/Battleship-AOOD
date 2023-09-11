@@ -1,4 +1,4 @@
-package src.test.java.Battleship_AOOD;
+package Battleship_AOOD;
 
 import src.main.java.Battleship_AOOD.Position;
 import org.junit.Test;
@@ -8,7 +8,7 @@ public class PositionTest {
     Position pos1 = new Position(5, 'D');
     Position pos2 = new Position(0, 0);
 
-    //@Test 
+    @Test
     public void testPosition(){
         System.out.println(pos1.toString());
         System.out.println(pos1.getColIndex() + " Col index");

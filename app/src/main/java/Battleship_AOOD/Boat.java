@@ -1,4 +1,4 @@
-package Battleship_AOOD;
+package src.main.java.Battleship_AOOD;
 
 import  src.main.java.Battleship_AOOD.Position;
 
@@ -12,6 +12,7 @@ public class Boat {
     boolean[] hits;
     String boatType;
     Position pos;
+    Position[] boatPos;
     String orientation;
 
     /**
@@ -50,7 +51,7 @@ public class Boat {
             case "Aircraft Carrier" -> 5;
             case "Battleship" -> 4;
             case "Cruiser", "Submarine" -> 3;
-            case "Destroyer" -> 2;
+            default -> 2;
         };
     }
 
@@ -138,6 +139,11 @@ public class Boat {
         return orientation;
     }
 
+    public Position[] generateAllPositions(){
+        
+        
+        return null;
+    }
 
 
 }
