@@ -27,6 +27,7 @@ public class Boat {
         this.orientation = orientation;
         hits = new boolean[size()];
         size = size();
+        boatPos = generateAllPositions();
     }
 
     /**
@@ -50,8 +51,9 @@ public class Boat {
         return switch (boatType) {
             case "Aircraft Carrier" -> 5;
             case "Battleship" -> 4;
-            case "Cruiser", "Submarine" -> 3;
-            default -> 2;
+            case "Cruiser","Submarine" -> 3;
+            case "Destroyer" -> 2;
+            default -> 0;
         };
     }
 
@@ -63,11 +65,11 @@ public class Boat {
     public boolean onBoat(Position targetPos){
         for(int i = 0; i<size; i++){
             if(orientation.equals("vertical")){
-                if(targetPos.getCol() == pos.getCol()+i){
+                if((targetPos.getRowIndex() == pos.getRowIndex()+i) && (targetPos.getColIndex() == pos.getColIndex())){
                     return true;
                 }
             }else{
-                if(targetPos.getRow() == pos.getRow()+i){
+                if((targetPos.getColIndex() == pos.getColIndex()+i)&&(targetPos.getRowIndex() == pos.getRowIndex())){
                     return true;
                 }
             }
@@ -83,11 +85,11 @@ public class Boat {
     public boolean isHit(Position targetPos){
         for(int i = 0; i<size; i++){
             if(orientation.equals("vertical")){
-                if(targetPos.getCol() == pos.getCol()+i){
+                if((targetPos.getRowIndex() == pos.getRowIndex()+i) && (targetPos.getColIndex() == pos.getColIndex())){
                     return hits[i];
                 }
             }else{
-                if(targetPos.getRow() == pos.getRow()+i){
+                if((targetPos.getColIndex() == pos.getColIndex()+i)&&(targetPos.getRowIndex() == pos.getRowIndex())){
                     return hits[i];
                 }
             }
@@ -102,11 +104,11 @@ public class Boat {
     public void hit(Position targetPos){
         for(int i = 0; i<size; i++){
             if(orientation.equals("vertical")){
-                if(targetPos.getCol() == pos.getCol()+i){
+                if((targetPos.getRowIndex() == pos.getRowIndex()+i) && (targetPos.getColIndex() == pos.getColIndex())){
                     hits[i]=true;
                 }
             }else{
-                if(targetPos.getRow() == pos.getRow()+i){
+                if((targetPos.getColIndex() == pos.getColIndex()+i)&&(targetPos.getRowIndex() == pos.getRowIndex())){
                     hits[i]=true;
                 }
             }
@@ -132,6 +134,10 @@ public class Boat {
         return pos;
     }
 
+    public Position[] getAllPos(){
+        return boatPos;
+    }
+
     /**
      * @return Returns the orientation of the boat
      */
@@ -139,10 +145,27 @@ public class Boat {
         return orientation;
     }
 
+    //--------------------------------------------------------------------------
+    // For Troubleshooting use only
+    //--------------------------------------------------------------------------
     public Position[] generateAllPositions(){
-        
-        
-        return null;
+       Position[] temp = new Position[size];
+        for(int i = 0; i<size; i++){
+            if(orientation.equals("vertical")){
+                if(pos.getRowIndex()+i > 9){
+                    temp[i] = new Position(pos.getColIndex(), pos.getRowIndex()-1);
+                }else{
+                    temp[i] = new Position(pos.getColIndex(), pos.getRowIndex()+i);
+                }
+            }else{
+                if(pos.getColIndex()+i > 9){
+                    temp[i] = new Position(pos.getColIndex()-1, pos.getRowIndex());
+                }else{
+                    temp[i] = new Position(pos.getColIndex()+i, pos.getRowIndex());
+                }
+            }
+        }
+        return temp;
     }
 
 
