@@ -1,6 +1,5 @@
 package Battleship_AOOD;
 
-import src.main.java.Battleship_AOOD.Position;
 import org.junit.Test;
 
 

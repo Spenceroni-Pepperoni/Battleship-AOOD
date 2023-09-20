@@ -1,6 +1,4 @@
-package src.main.java.Battleship_AOOD;
-
-import  src.main.java.Battleship_AOOD.Position;
+package Battleship_AOOD;
 
 /**
  * Boat class for Battleship Game

@@ -1,4 +1,4 @@
-package src.main.java.Battleship_AOOD;
+package Battleship_AOOD;
 
 public class Position{
     private int col;
