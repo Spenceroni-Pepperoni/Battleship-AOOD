@@ -8,7 +8,7 @@ public class Ocean {
         boats = new Boat[5];
     }
 
-    public void placeBoat(String boatName, String orientation, Position pos) throws Exception{
+    public void placeBoat(String boatName, String orientation, Position pos) throws RuntimeException{
         boolean isOnBoard;
         int size = switch (boatName) {
             case "Aircraft Carrier" -> 5;
@@ -21,11 +21,11 @@ public class Ocean {
         for(int i = 0; i <size; i++){
             if(orientation.equals("vertical")){
                 if(!((oceanTiles.length >= pos.getRowIndex()+i) && (oceanTiles.length >= pos.getColIndex()))){
-                    throw new Exception("Boat is off the map in the vertical direction");
+                    throw new RuntimeException("Boat is off the map in the vertical direction");
                 }
             }else{
                 if((oceanTiles[0].length >= pos.getRowIndex()) && (oceanTiles[0].length >= pos.getColIndex()+i)){
-                    throw new Exception("Boat is off the map in the horizontal direction");   
+                    throw new RuntimeException("Boat is off the map in the horizontal direction");
                 }
             }
         }
@@ -35,13 +35,13 @@ public class Ocean {
                 if((oceanTiles[pos.getRowIndex()+i][pos.getColIndex()] == null)){
                     oceanTiles[pos.getRowIndex()+i][pos.getColIndex()] = new Position(pos.getRowIndex() + i, pos.getColIndex());
                 }else{
-                    throw new Exception("Boat is overlapping with another boat");
+                    throw new RuntimeException("Boat is overlapping with another boat");
                 }
             }else{
                 if((oceanTiles[pos.getRowIndex()][pos.getColIndex()+i] == null)){
                     oceanTiles[pos.getRowIndex()][pos.getColIndex()+i] = new Position(pos.getRowIndex(), pos.getColIndex() + i);
                 }else{
-                    throw new Exception("Boat is overlapping with another boat");
+                    throw new RuntimeException("Boat is overlapping with another boat");
                 }
             }
         }
