@@ -62,18 +62,14 @@ public class Boat {
      */
     public boolean onBoat(Position targetPos){
         for(int i = 0; i<size; i++){
-            if(orientation.equals("vertical")){
-                if((targetPos.getRowIndex() == pos.getRowIndex()+i) && (targetPos.getColIndex() == pos.getColIndex())){
-                    return true;
-                }
-            }else{
-                if((targetPos.getColIndex() == pos.getColIndex()+i)&&(targetPos.getRowIndex() == pos.getRowIndex())){
+                if((targetPos.getRowIndex() == boatPos[i].getRowIndex()) && (targetPos.getColIndex() == boatPos[i].getColIndex())){
                     return true;
                 }
             }
-        }
         return false;
     }
+
+
 
     /**
      * Checks if targetPos has been hit before

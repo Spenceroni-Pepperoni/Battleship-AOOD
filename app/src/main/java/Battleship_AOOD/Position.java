@@ -12,18 +12,18 @@ public class Position{
         this.row = row;
 
         colIndex = col-1;
-        switch(row){
-            case 'A': rowIndex = 0;break;
-            case 'B': rowIndex = 1;break;
-            case 'C': rowIndex = 2;break;
-            case 'D': rowIndex = 3;break;
-            case 'E': rowIndex = 4;break;
-            case 'F': rowIndex = 5;break;
-            case 'G': rowIndex = 6;break;
-            case 'H': rowIndex = 7;break;
-            case 'I': rowIndex = 8;break;
-            case 'J': rowIndex = 9;break;
-            default: System.out.println("Invalid row char");
+        switch (row) {
+            case 'A' -> rowIndex = 0;
+            case 'B' -> rowIndex = 1;
+            case 'C' -> rowIndex = 2;
+            case 'D' -> rowIndex = 3;
+            case 'E' -> rowIndex = 4;
+            case 'F' -> rowIndex = 5;
+            case 'G' -> rowIndex = 6;
+            case 'H' -> rowIndex = 7;
+            case 'I' -> rowIndex = 8;
+            case 'J' -> rowIndex = 9;
+            default -> System.out.println("Invalid row char");
         }
     }
     
@@ -32,18 +32,18 @@ public class Position{
         this.colIndex = colIndex;
 
         col = colIndex;
-        switch(rowIndex+1){
-            case 1: row = 'A';break;
-            case 2: row = 'B';break;
-            case 3: row = 'C';break;
-            case 4: row = 'D';break;
-            case 5: row = 'E';break;
-            case 6: row = 'F';break;
-            case 7: row = 'G';break;
-            case 8: row = 'H';break;
-            case 9: row = 'I';break;
-            case 10: row = 'J';break;
-            default: System.out.println("Invalid row index");
+        switch (rowIndex + 1) {
+            case 1 -> row = 'A';
+            case 2 -> row = 'B';
+            case 3 -> row = 'C';
+            case 4 -> row = 'D';
+            case 5 -> row = 'E';
+            case 6 -> row = 'F';
+            case 7 -> row = 'G';
+            case 8 -> row = 'H';
+            case 9 -> row = 'I';
+            case 10 -> row = 'J';
+            default -> System.out.println("Invalid row index");
         }
     }
 

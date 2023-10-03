@@ -15,7 +15,7 @@ public class Ocean {
             case "Battleship" -> 4;
             case "Cruiser","Submarine" -> 3;
             case "Destroyer" -> 2;
-            default -> 0;
+            default -> throw new IllegalStateException("Unexpected value: " + boatName);
         };
 
         for(int i = 0; i <size; i++){
@@ -24,7 +24,7 @@ public class Ocean {
                     throw new RuntimeException("Boat is off the map in the vertical direction");
                 }
             }else{
-                if((oceanTiles[0].length >= pos.getRowIndex()) && (oceanTiles[0].length >= pos.getColIndex()+i)){
+                if(!((oceanTiles[0].length >= pos.getRowIndex()) && (oceanTiles[0].length >= pos.getColIndex()+i))){
                     throw new RuntimeException("Boat is off the map in the horizontal direction");
                 }
             }
