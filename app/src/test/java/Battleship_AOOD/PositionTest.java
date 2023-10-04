@@ -10,12 +10,12 @@ public class PositionTest {
     @Test
     public void testPosition(){
         System.out.println(pos1.toString());
-        System.out.println(pos1.getColIndex() + " Col index");
-        System.out.println(pos1.getRowIndex() + " Row index");
+        System.out.println(pos1.columnIndex() + " Col index");
+        System.out.println(pos1.rowIndex() + " Row index");
 
         System.out.println(pos2.toString());
-        System.out.println(pos1.getCol() + " Col");
-        System.out.println(pos1.getRow() + " Row");
+        System.out.println(pos1.column() + " Col");
+        System.out.println(pos1.row() + " Row");
 
 
     }

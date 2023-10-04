@@ -62,7 +62,7 @@ public class Boat {
      */
     public boolean onBoat(Position targetPos){
         for(int i = 0; i<size; i++){
-                if((targetPos.getRowIndex() == boatPos[i].getRowIndex()) && (targetPos.getColIndex() == boatPos[i].getColIndex())){
+                if((targetPos.rowIndex() == boatPos[i].rowIndex()) && (targetPos.columnIndex() == boatPos[i].columnIndex())){
                     return true;
                 }
             }
@@ -79,11 +79,11 @@ public class Boat {
     public boolean isHit(Position targetPos){
         for(int i = 0; i<size; i++){
             if(orientation.equals("vertical")){
-                if((targetPos.getRowIndex() == pos.getRowIndex()+i) && (targetPos.getColIndex() == pos.getColIndex())){
+                if((targetPos.rowIndex() == pos.rowIndex()+i) && (targetPos.columnIndex() == pos.columnIndex())){
                     return hits[i];
                 }
             }else{
-                if((targetPos.getColIndex() == pos.getColIndex()+i)&&(targetPos.getRowIndex() == pos.getRowIndex())){
+                if((targetPos.columnIndex() == pos.columnIndex()+i)&&(targetPos.rowIndex() == pos.rowIndex())){
                     return hits[i];
                 }
             }
@@ -98,11 +98,11 @@ public class Boat {
     public void hit(Position targetPos){
         for(int i = 0; i<size; i++){
             if(orientation.equals("vertical")){
-                if((targetPos.getRowIndex() == pos.getRowIndex()+i) && (targetPos.getColIndex() == pos.getColIndex())){
+                if((targetPos.rowIndex() == pos.rowIndex()+i) && (targetPos.columnIndex() == pos.columnIndex())){
                     hits[i]=true;
                 }
             }else{
-                if((targetPos.getColIndex() == pos.getColIndex()+i)&&(targetPos.getRowIndex() == pos.getRowIndex())){
+                if((targetPos.columnIndex() == pos.columnIndex()+i)&&(targetPos.rowIndex() == pos.rowIndex())){
                     hits[i]=true;
                 }
             }
@@ -146,16 +146,16 @@ public class Boat {
        Position[] temp = new Position[size];
         for(int i = 0; i<size; i++){
             if(orientation.equals("vertical")){
-                if(pos.getRowIndex()+i > 9){
-                    temp[i] = new Position(pos.getColIndex(), pos.getRowIndex()-1);
+                if(pos.rowIndex()+i > 9){
+                    temp[i] = new Position(pos.columnIndex(), pos.rowIndex()-1);
                 }else{
-                    temp[i] = new Position(pos.getColIndex(), pos.getRowIndex()+i);
+                    temp[i] = new Position(pos.columnIndex(), pos.rowIndex()+i);
                 }
             }else{
-                if(pos.getColIndex()+i > 9){
-                    temp[i] = new Position(pos.getColIndex()-1, pos.getRowIndex());
+                if(pos.columnIndex()+i > 9){
+                    temp[i] = new Position(pos.columnIndex()-1, pos.rowIndex());
                 }else{
-                    temp[i] = new Position(pos.getColIndex()+i, pos.getRowIndex());
+                    temp[i] = new Position(pos.columnIndex()+i, pos.rowIndex());
                 }
             }
         }

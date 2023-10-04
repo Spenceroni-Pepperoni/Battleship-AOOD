@@ -1,10 +1,11 @@
 package Battleship_AOOD;
 
 import org.junit.Test;
-
+//import GoodOcean;
 
 public class OceanTest {
-    Ocean ocean = new Ocean();
+    //Ocean ocean = new Ocean();
+    GoodOcean ocean = new GoodOcean();
 
     Position fiveD = new Position(5, 'D');
     Position oneA = new Position(1, 'A');
@@ -22,17 +23,7 @@ public class OceanTest {
     
     @Test
     public void testOcean(){
-        try{
-            ocean.placeBoat(badBoatVert.name(), badBoatVert.direction(), badBoatVert.position());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
-        try{
-            ocean.placeBoat(badBoatHorz.name(), badBoatHorz.direction(), badBoatHorz.position());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
         try{
             ocean.placeBoat(aircraftC.name(), aircraftC.direction(), aircraftC.position());
@@ -41,39 +32,44 @@ public class OceanTest {
             ocean.placeBoat(destroyer.name(), destroyer.direction(), destroyer.position());
             ocean.placeBoat(sub.name(), sub.direction(), sub.position());
 
+            System.out.println("\nAircraft");
             for(int i = 0; i <= aircraftC.size; i++){
                 System.out.println("Shooting at " +
-                        new Position(aircraftC.position().getColIndex(), aircraftC.position().getRowIndex()+i) + ": ");
-                ocean.shootAt(new Position(aircraftC.position().getColIndex(), aircraftC.position().getRowIndex()+i));
-                System.out.print(ocean.hit(new Position(aircraftC.position().getColIndex(), aircraftC.position().getRowIndex()+i)));
+                        new Position(aircraftC.position().columnIndex(), aircraftC.position().rowIndex()+i) + ": ");
+                ocean.shootAt(new Position(aircraftC.position().columnIndex(), aircraftC.position().rowIndex()+i));
+                System.out.println(ocean.hit(new Position(aircraftC.position().columnIndex(), aircraftC.position().rowIndex()+i)));
             }
 
+            System.out.println("\nBattleship");
             for(int i = 0; i <= battleship.size; i++){
                 System.out.println("Shooting at " +
-                        new Position(battleship.position().getColIndex(), battleship.position().getRowIndex()+i) + ": ");
-                ocean.shootAt(new Position(battleship.position().getColIndex(), battleship.position().getRowIndex()+i));
-                System.out.println(ocean.hit(new Position(battleship.position().getColIndex(), battleship.position().getRowIndex()+i)));
+                        new Position(battleship.position().columnIndex(), battleship.position().rowIndex()+i) + ": ");
+                ocean.shootAt(new Position(battleship.position().columnIndex(), battleship.position().rowIndex()+i));
+                System.out.println(ocean.hit(new Position(battleship.position().columnIndex(), battleship.position().rowIndex()+i)));
             }
 
+            System.out.println("\nCruiser");
             for(int i = 0; i <= cruiser.size; i++){
                 System.out.println("Shooting at " +
-                        new Position(cruiser.position().getColIndex()+i, cruiser.position().getRowIndex()) + ": ");
-                ocean.shootAt(new Position(cruiser.position().getColIndex()+i, cruiser.position().getRowIndex()));
-                System.out.println(ocean.hit(new Position(cruiser.position().getColIndex()+i, cruiser.position().getRowIndex())));
+                        new Position(cruiser.position().columnIndex()+i, cruiser.position().rowIndex()) + ": ");
+                ocean.shootAt(new Position(cruiser.position().columnIndex()+i, cruiser.position().rowIndex()));
+                System.out.println(ocean.hit(new Position(cruiser.position().columnIndex()+i, cruiser.position().rowIndex())));
             }
 
+            System.out.println("\nDestroyer");
             for(int i = 0; i <= destroyer.size; i++){
                 System.out.println("Shooting at " +
-                        new Position(destroyer.position().getColIndex()+i, destroyer.position().getRowIndex()) + ": ");
-                ocean.shootAt(new Position(destroyer.position().getColIndex()+i, destroyer.position().getRowIndex()));
-                System.out.println(ocean.hit(new Position(destroyer.position().getColIndex()+i, destroyer.position().getRowIndex())));
+                        new Position(destroyer.position().columnIndex()+i, destroyer.position().rowIndex()) + ": ");
+                ocean.shootAt(new Position(destroyer.position().columnIndex()+i, destroyer.position().rowIndex()));
+                System.out.println(ocean.hit(new Position(destroyer.position().columnIndex()+i, destroyer.position().rowIndex())));
             }
 
+            System.out.println("\nSubmarine");
             for(int i = 0; i <= sub.size; i++){
                 System.out.println("Shooting at " +
-                        new Position(sub.position().getColIndex()+i, sub.position().getRowIndex()) + ": ");
-                ocean.shootAt(new Position(sub.position().getColIndex()+i, sub.position().getRowIndex()));
-                System.out.println(ocean.hit(new Position(sub.position().getColIndex()+i, sub.position().getRowIndex())));
+                        new Position(sub.position().columnIndex()+i, sub.position().rowIndex()) + ": ");
+                ocean.shootAt(new Position(sub.position().columnIndex()+i, sub.position().rowIndex()));
+                System.out.println(ocean.hit(new Position(sub.position().columnIndex()+i, sub.position().rowIndex())));
             }
 
             

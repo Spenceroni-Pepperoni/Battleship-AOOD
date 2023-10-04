@@ -47,19 +47,19 @@ public class Position{
         }
     }
 
-    public char getRow(){
+    public char row(){
         return row;
     }
 
-    public int getCol(){
+    public int column(){
         return col;
     }
 
-    public int getRowIndex(){
+    public int rowIndex(){
         return rowIndex;
     }
 
-    public int getColIndex(){
+    public int columnIndex(){
         return colIndex;
     }
 

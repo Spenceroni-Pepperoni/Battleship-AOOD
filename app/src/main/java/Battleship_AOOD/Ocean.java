@@ -1,5 +1,6 @@
 package Battleship_AOOD;
 
+
 public class Ocean {
     Position[][] oceanTiles;
     Boat[] boats;
@@ -20,11 +21,11 @@ public class Ocean {
 
         for(int i = 0; i <size; i++){
             if(orientation.equals("vertical")){
-                if(!((oceanTiles.length >= pos.getRowIndex()+i) && (oceanTiles.length >= pos.getColIndex()))){
+                if(!((oceanTiles.length >= pos.rowIndex()+i) && (oceanTiles.length >= pos.columnIndex()))){
                     throw new RuntimeException("Boat is off the map in the vertical direction");
                 }
             }else{
-                if(!((oceanTiles[0].length >= pos.getRowIndex()) && (oceanTiles[0].length >= pos.getColIndex()+i))){
+                if(!((oceanTiles[0].length >= pos.rowIndex()) && (oceanTiles[0].length >= pos.columnIndex()+i))){
                     throw new RuntimeException("Boat is off the map in the horizontal direction");
                 }
             }
@@ -32,14 +33,14 @@ public class Ocean {
 
         for(int i = 0; i <size; i++){
             if(orientation.equals("vertical")){
-                if((oceanTiles[pos.getRowIndex()+i][pos.getColIndex()] == null)){
-                    oceanTiles[pos.getRowIndex()+i][pos.getColIndex()] = new Position(pos.getRowIndex() + i, pos.getColIndex());
+                if((oceanTiles[pos.rowIndex()+i][pos.columnIndex()] == null)){
+                    oceanTiles[pos.rowIndex()+i][pos.columnIndex()] = new Position(pos.rowIndex() + i, pos.columnIndex());
                 }else{
                     throw new RuntimeException("Boat is overlapping with another boat");
                 }
             }else{
-                if((oceanTiles[pos.getRowIndex()][pos.getColIndex()+i] == null)){
-                    oceanTiles[pos.getRowIndex()][pos.getColIndex()+i] = new Position(pos.getRowIndex(), pos.getColIndex() + i);
+                if((oceanTiles[pos.rowIndex()][pos.columnIndex()+i] == null)){
+                    oceanTiles[pos.rowIndex()][pos.columnIndex()+i] = new Position(pos.rowIndex(), pos.columnIndex() + i);
                 }else{
                     throw new RuntimeException("Boat is overlapping with another boat");
                 }
@@ -55,13 +56,13 @@ public class Ocean {
     }
 
     public void shootAt(Position pos){
-        if((oceanTiles[pos.getRowIndex()][pos.getColIndex()] != null)&&(pos.equals(oceanTiles[pos.getRowIndex()][pos.getColIndex()]))){
+        if((oceanTiles[pos.rowIndex()][pos.columnIndex()] != null)&&(pos.equals(oceanTiles[pos.rowIndex()][pos.columnIndex()]))){
             findBoat(pos).hit(pos);
         }
     }
 
     public boolean hit(Position pos){
-        if((oceanTiles[pos.getRowIndex()][pos.getColIndex()] != null)&&(pos.equals(oceanTiles[pos.getRowIndex()][pos.getColIndex()]))){
+        if((oceanTiles[pos.rowIndex()][pos.columnIndex()] != null)&&(pos.equals(oceanTiles[pos.rowIndex()][pos.columnIndex()]))){
             return findBoat(pos).isHit(pos);
         }
         return false;
