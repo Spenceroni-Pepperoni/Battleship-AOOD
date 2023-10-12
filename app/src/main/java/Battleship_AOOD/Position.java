@@ -1,69 +1,78 @@
+//------------------------------------------------------------------------------
+// Parker Strickland THANKS PARKER!!!!
+// 8/13/23
+// The Position Class
+//------------------------------------------------------------------------------
 package Battleship_AOOD;
 
-public class Position{
-    private int col;
-    private char row;
-    private int rowIndex;
-    private int colIndex;
+class Position{
+    private char rowChar;
+    private int columnNum;
+    private int rowIndexNum;
+    private int colIndexNum;
 
-
-    public Position(int col, char row){
-        this.col = col;
-        this.row = row;
-
-        colIndex = col-1;
-        switch (row) {
-            case 'A' -> rowIndex = 0;
-            case 'B' -> rowIndex = 1;
-            case 'C' -> rowIndex = 2;
-            case 'D' -> rowIndex = 3;
-            case 'E' -> rowIndex = 4;
-            case 'F' -> rowIndex = 5;
-            case 'G' -> rowIndex = 6;
-            case 'H' -> rowIndex = 7;
-            case 'I' -> rowIndex = 8;
-            case 'J' -> rowIndex = 9;
-            default -> System.out.println("Invalid row char");
-        }
-    }
-    
-    public Position(int colIndex, int rowIndex){
-        this.rowIndex = rowIndex;
-        this.colIndex = colIndex;
-
-        col = colIndex;
-        switch (rowIndex + 1) {
-            case 1 -> row = 'A';
-            case 2 -> row = 'B';
-            case 3 -> row = 'C';
-            case 4 -> row = 'D';
-            case 5 -> row = 'E';
-            case 6 -> row = 'F';
-            case 7 -> row = 'G';
-            case 8 -> row = 'H';
-            case 9 -> row = 'I';
-            case 10 -> row = 'J';
-            default -> System.out.println("Invalid row index");
-        }
+    //------------------------------------------------------------------------------
+    // Char parameter and int parameter constructor for Position class
+    // @param char rowChar The character of the selected row
+    // @param int columnNum The number of the selected column
+    //------------------------------------------------------------------------------
+    public Position(char rowChar, int columnNum){
+        this.rowChar = rowChar;
+        this.columnNum = columnNum;
+        rowIndexNum = rowIndex();
+        colIndexNum = columnIndex();
     }
 
+    //------------------------------------------------------------------------------
+    // Two int parameter constructor for Position class
+    // @param int rowIndexNum The number of the index of the selected row
+    // @param int columnIndexNum The number of the index of the selected column
+    //------------------------------------------------------------------------------
+    public Position(int rowIndexNum, int colIndexNum){
+        this.rowIndexNum = rowIndexNum;
+        this.colIndexNum = colIndexNum;
+        columnNum = colIndexNum + 1;
+        rowChar = (char)(rowIndexNum + 'A');
+    }
+
+    //------------------------------------------------------------------------------
+    // @return A character (upper case letter) corresponding to the row represented
+    // in the position.
+    //------------------------------------------------------------------------------
     public char row(){
-        return row;
+        return rowChar;
     }
 
+    //------------------------------------------------------------------------------
+    // @return An integer corresponding to the column represented in the
+    // position.
+    //------------------------------------------------------------------------------
     public int column(){
-        return col;
+        return columnNum;
     }
 
+    //------------------------------------------------------------------------------
+    // @return Integers between 0 and 9 for the row. A corresponds to 0, B to 1, etc
+    //------------------------------------------------------------------------------
     public int rowIndex(){
-        return rowIndex;
+        char temp1 = row();
+        return (char)(temp1 - 'A');
     }
 
+    //------------------------------------------------------------------------------
+    // @return An integer between 0 and 9 for the column. The index is be one less
+    // than the number visible to the player
+    //------------------------------------------------------------------------------
     public int columnIndex(){
-        return colIndex;
+        return columnNum - 1;
     }
 
+    //------------------------------------------------------------------------------
+    // @return a string containing the character for the row, followed by a
+    // hyphen (“-“) followed by the number for the column. I.e. B-9.
+    //------------------------------------------------------------------------------
     public String toString(){
-        return (row + "-" + col);
+        return row() + "-" + column();
     }
+
 }

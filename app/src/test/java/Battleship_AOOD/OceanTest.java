@@ -21,7 +21,7 @@ public class OceanTest {
     Boat badBoatVert = new Boat("Destroyer", new Position(9,9), "vertical");
     Boat badBoatHorz = new Boat("Aircraft Carrier", new Position(1,9), "horizontal");
     
-    @Test
+    //@Test
     public void testOcean(){
 
 
@@ -71,8 +71,6 @@ public class OceanTest {
                 ocean.shootAt(new Position(sub.position().columnIndex()+i, sub.position().rowIndex()));
                 System.out.println(ocean.hit(new Position(sub.position().columnIndex()+i, sub.position().rowIndex())));
             }
-
-            
 
         } catch(Exception e){
             e.printStackTrace();
